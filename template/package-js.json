@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "makeccx build"
+  },
+  "devDependencies": {
+    "clipcc-extension": "^0.2.0",
+    "esbuild": ">=0.25.4",
+    "jszip": ">=3.10.1",
+    "makeccx": "^1.1.0",
+    "rimraf": ">=6.0.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "nodenext",
+        "skipLibCheck": true,
+        "lib": [
+            "ESNext"
+        ],
+        "allowSyntheticDefaultImports": true,
+        "checkJs": true,
+        "declaration": false,
+        "outDir": "./"
+    },
+    "include": [
+        "create.ts"
+    ],
+    "exclude": []
+}

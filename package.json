@@ -1,0 +1,40 @@
+{
+  "name": "create-makeccx",
+  "version": "1.1.0",
+  "author": "bddjr",
+  "packageManager": "npm@10.8.3",
+  "main": "create.js",
+  "type": "module",
+  "files": [
+    "create.js",
+    "template"
+  ],
+  "engines": {
+    "node": ">=v20.8.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "tsc",
+    "test": "tsc && node create.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makeccx/create-makeccx.git"
+  },
+  "keywords": [
+    "makeccx",
+    "ccx",
+    "clipcc",
+    "extension"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^12.6.1"
+  },
+  "devDependencies": {
+    "create-makeccx": "file:./",
+    "@types/node": ">=22.15.18",
+    "typescript": ">=5.8.3",
+    "rimraf": ">=6.0.1"
+  }
+}
