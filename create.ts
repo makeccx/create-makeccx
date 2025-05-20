@@ -1,3 +1,9 @@
+/**
+ * @copyright 2025 bddjr & Clip Team
+ * @license MIT
+ * @link https://github.com/bddjr/create-makeccx
+ */
+
 import inquirer from "inquirer"
 import fs from "node:fs"
 import path from "node:path"
