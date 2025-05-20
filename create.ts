@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * @copyright 2025 bddjr & Clip Team
  * @license MIT
