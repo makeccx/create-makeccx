@@ -22,10 +22,12 @@
     "url": "git+https://github.com/makeccx/create-makeccx.git"
   },
   "keywords": [
-    "makeccx",
-    "ccx",
     "clipcc",
-    "extension"
+    "extension",
+    "clipcc-extension",
+    "ccx",
+    "ccext",
+    "makeccx"
   ],
   "license": "MIT",
   "dependencies": {
