@@ -145,7 +145,7 @@ fs.mkdirSync(extensionDir)
 cp('.github')
 cp('.vscode')
 cp('.gitattributes')
-cp('.gitignore')
+cp('template-gitignore', '.gitignore')
 cp('src-public/assets', 'src/assets')
 
 if (useJS) {
