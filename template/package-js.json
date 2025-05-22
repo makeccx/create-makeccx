@@ -6,6 +6,6 @@
   },
   "devDependencies": {
     "clipcc-extension": "^0.2.0",
-    "makeccx": "^1.1.0"
+    "makeccx": "^1.1.1"
   }
 }
