@@ -74,6 +74,18 @@ function checkInputID(id: string): true | string {
     return true
 }
 
+const filenameAntiChar = '\\/:*?"<>|'
+
+function checkDirectoryName(name: string): true | string {
+    for (const i of name) {
+        if (filenameAntiChar.includes(i))
+            return 'Cannot contain characters: ' + filenameAntiChar
+    }
+    if (fs.existsSync(name))
+        return 'Directory exists!'
+    return true
+}
+
 try {
     {
         const answerLang = await inquirer.prompt([{
@@ -89,7 +101,7 @@ try {
             type: 'input',
             name: 'id',
             message: 'Extension ID:',
-            validate: (id) => checkInputID(id)
+            validate: checkInputID,
         }])
         id = answerID.id;
         [author, extensionName] = id.split('.', 2)
@@ -100,7 +112,7 @@ try {
             name: 'dir',
             message: 'Directory Name:',
             default: extensionDir,
-            validate: (v) => (!fs.existsSync(v) || 'Directory exists!')
+            validate: checkDirectoryName,
         }])
         if (answerDir.dir) {
             extensionDir = answerDir.dir
