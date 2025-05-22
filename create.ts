@@ -77,10 +77,15 @@ function checkInputID(id: string): true | string {
 const filenameAntiChar = '\\/:*?"<>|'
 
 function checkDirectoryName(name: string): true | string {
+    let isAllDot = true
     for (const i of name) {
+        if (i !== '.')
+            isAllDot = false
         if (filenameAntiChar.includes(i))
             return 'Cannot contain characters: ' + filenameAntiChar
     }
+    if (isAllDot)
+        return 'Invalid name!'
     if (fs.existsSync(name))
         return 'Directory exists!'
     return true
@@ -196,7 +201,11 @@ for (const name of fs.readdirSync(leftPath(`src-public/locales`))) {
 
 
 console.log(`
+Next, run these commands to build the ccx file:
+
     cd ${extensionDir}
     npm i
     npm run build
+
+You can also use pnpm or yarn.
 `)
