@@ -4,6 +4,7 @@
 import { type } from "clipcc-extension"
 import defineBlock from "../../utils/define-block"
 import { myConfirm } from "../../utils/my-confirm"
+import { paramSprites } from "../../utils/param-sprites"
 
 /** @type {string} */
 const categoryID = 'hello'
@@ -75,7 +76,17 @@ const blocks = [
         function(args, util) {
             return typeof args.a
         }
-    })
+    }),
+    defineBlock({
+        id: 'sprite_name',
+        type: type.BlockType.REPORTER,
+        param: {
+            a: paramSprites,
+        },
+        function(args, util) {
+            return args.a
+        }
+    }),
 ]
 
 

@@ -73,25 +73,31 @@ export const categories = input.filter((c) => (typeof c === 'object')).map((c) =
                     field: item.field,
                     shadow: item.shadow,
                 }
-                if (item.menu) {
-                    if (item.menu.topID) {
-                        // 如果topID存在，会构建为顶层id，
-                        // 例如topID是"mymenu"，则构建后的id是"bddjr.makeccx.mymenu"。
-                        outParam.menuId = appendID(ccxID, item.menu.topID)
-                    } else {
-                        // 如果topID不存在，会使用param的key构建相对id，
-                        // 例如类别id是"category"，积木id是"block"，param的key是"menu"，
-                        // 则构建后的id是"bddjr.makeccx.category.block.menu"。
-                        outParam.menuId = appendID(blockID, key)
-                    }
-                    outParam.menu = item.menu.items.map((v) => ({
-                        messageId: appendID(
+                if (typeof item.menu === 'object') {
+                    if (item.menu.items?.length) {
+                        if (item.menu.topID) {
+                            // 如果topID存在，会构建为顶层id，
+                            // 例如topID是"mymenu"，则构建后的id是"bddjr.makeccx.mymenu"。
+                            outParam.menuId = appendID(ccxID, item.menu.topID)
+                        } else {
+                            // 如果topID不存在，会使用param的key构建相对id，
+                            // 例如类别id是"category"，积木id是"block"，param的key是"menu"，
+                            // 则构建后的id是"bddjr.makeccx.category.block.menu"。
+                            outParam.menuId = appendID(blockID, key)
+                        }
+                        outParam.menu = item.menu.items.map((v) => ({
                             //@ts-ignore
-                            outParam.menuId,
-                            v.id
-                        ),
-                        value: v.value,
-                    }))
+                            messageId: appendID(outParam.menuId, v.id),
+                            value: v.value,
+                        }))
+                    }
+                } else if (typeof item.menu === 'function') {
+                    // 动态菜单
+                    //@ts-ignore
+                    outParam.menu = function (...args) {
+                        const out = item.menu(...args)
+                        return out?.length ? out : [['', '']]
+                    }
                 }
                 out.param[key] = outParam
             }
